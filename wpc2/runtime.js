@@ -6,8 +6,6 @@ assert2(cr.plugins_, "cr.plugins_ not created");
 
 /////////////////////////////////////
 // Plugin class
-// *** CHANGE THE PLUGIN ID HERE *** - must match the "id" property in edittime.js
-//          vvvvvvvv
 cr.plugins_.wpc2 = function(runtime)
 {
 	this.runtime = runtime;
@@ -15,9 +13,6 @@ cr.plugins_.wpc2 = function(runtime)
 
 (function ()
 {
-	/////////////////////////////////////
-	// *** CHANGE THE PLUGIN ID HERE *** - must match the "id" property in edittime.js
-	//                            vvvvvvvv
 	var pluginProto = cr.plugins_.wpc2.prototype;
 		
 	/////////////////////////////////////
@@ -33,6 +28,7 @@ cr.plugins_.wpc2 = function(runtime)
 	// called on startup for each object type
 	typeProto.onCreate = function()
 	{
+		this.ratioTolerance = 1;
 	};
 
 	/////////////////////////////////////
@@ -41,9 +37,6 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		this.type = type;
 		this.runtime = type.runtime;
-		
-		// any other properties you need, e.g...
-		// this.myValue = 0;
 	};
 	
 	var instanceProto = pluginProto.Instance.prototype;
@@ -106,6 +99,7 @@ cr.plugins_.wpc2 = function(runtime)
 	/**BEGIN-PREVIEWONLY**/
 	instanceProto.getDebuggerValues = function (propsections)
 	{
+		// LOLOLOLOL this doesn't go to production
 		// Append to propsections any debugger sections you want to appear.
 		// Each section is an object with two members: "title" and "properties".
 		// "properties" is an array of individual debugger properties to display
@@ -140,8 +134,21 @@ cr.plugins_.wpc2 = function(runtime)
 	// Conditions
 	function Cnds() {};
 
+	// 0:
 	Cnds.prototype.OnResizec2 = function ()
 	{
+		return true;
+	};
+	
+	// 1:
+	Cnds.prototype.CheckAspect = function (stringAspect, threshold)
+	{
+		var wh = stringAspect.split(":");
+		if(wh.length == 2){
+			var sysAspect = window.innerWidth / window.innerHeight;
+			var speAspect = parseFloat(wh[0]) / parseFloat(wh[1]);
+			return (Math.abs(sysAspect - speAspect) < threshold);
+		}
 		return true;
 	};
 	
@@ -151,16 +158,6 @@ cr.plugins_.wpc2 = function(runtime)
 	// Actions
 	// No actions for now
 	function Acts() {};
-	/*
-	// the example action
-	Acts.prototype.MyAction = function (myparam)
-	{
-		// alert the message
-		alert(myparam);
-	};
-	
-	// ... other actions here ...
-	*/
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
@@ -174,7 +171,6 @@ cr.plugins_.wpc2 = function(runtime)
 	Exps.prototype.WindowHeight = function (ret){
 		ret.set_int(window.innerHeight);
 	};
-	// ... other expressions here ...
 	
 	pluginProto.exps = new Exps();
 
