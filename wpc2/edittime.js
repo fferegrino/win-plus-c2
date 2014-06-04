@@ -42,10 +42,8 @@
 //				description,		// appears in event wizard dialog when selected
 //				script_name);		// corresponding runtime function name
 				
-// example				
-AddNumberParam("Width", "The width");
-AddNumberParam("Height", "The height");
-AddCondition(0, cf_none, "Check aspect ratio", "Screen", "Check if the screen has {0}:{1} aspect ratio", "Description for my condition!", "AspectRatio");
+// On window resize
+AddCondition(0, cf_trigger, "An action that ocurrs when the user resizes the screen", "Screen", "Screen resized", "When the user resizes the screen", "OnResizec2");
 
 ////////////////////////////////////////
 // Actions
@@ -58,9 +56,10 @@ AddCondition(0, cf_none, "Check aspect ratio", "Screen", "Check if the screen ha
 //			 description,		// appears in event wizard dialog when selected
 //			 script_name);		// corresponding runtime function name
 
-// example
+/*// No actions for now
 AddStringParam("Message", "Enter a string to alert.");
 AddAction(0, af_none, "Alert", "My category", "Alert {0}", "Description for my action!", "MyAction");
+*/
 
 ////////////////////////////////////////
 // Expressions
@@ -73,8 +72,8 @@ AddAction(0, af_none, "Alert", "My category", "Alert {0}", "Description for my a
 //				 exp_name,		// the expression name after the dot, e.g. "foo" for "myobject.foo" - also the runtime function name
 //				 description);	// description in expressions panel
 
-// example
-AddExpression(0, ef_return_number, "Leet expression", "My category", "MyExpression", "Return the number 1337.");
+AddExpression(0, ef_return_number, "Window width", "Screen", "WindowWidth", "Get the width of the window");
+AddExpression(0, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
 
 ////////////////////////////////////////
 ACESDone();
@@ -90,7 +89,7 @@ ACESDone();
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
+	//new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
 	];
 	
 // Called by IDE when a new object type is to be created

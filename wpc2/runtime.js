@@ -51,9 +51,13 @@ cr.plugins_.wpc2 = function(runtime)
 	// called whenever an instance is created
 	instanceProto.onCreate = function()
 	{
-		// note the object is sealed after this call; ensure any properties you'll ever need are set on the object
-		// e.g...
-		// this.myValue = 0;
+		var self = this;
+		if (1)//(this.isWindows8)
+		{
+			window.addEventListener('resize', function(){
+				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnResizec2, self);
+			});
+		}
 	};
 	
 	// called whenever an instance is destroyed
@@ -136,23 +140,18 @@ cr.plugins_.wpc2 = function(runtime)
 	// Conditions
 	function Cnds() {};
 
-	// the example condition
-	Cnds.prototype.AspectRatio = function (param1, param2)
+	Cnds.prototype.OnResizec2 = function ()
 	{
-		var tolerance = 0.3;
-		var asp = window.innerWidth / window.innerHeight;
-		var myaspect = param1 / param2;
-		return (myaspect - tolerance) <= myaspect && myaspect <= (myaspect + tolerance);
+		return true;
 	};
-	
-	// ... other conditions here ...
 	
 	pluginProto.cnds = new Cnds();
 	
 	//////////////////////////////////////
 	// Actions
+	// No actions for now
 	function Acts() {};
-
+	/*
 	// the example action
 	Acts.prototype.MyAction = function (myparam)
 	{
@@ -161,22 +160,20 @@ cr.plugins_.wpc2 = function(runtime)
 	};
 	
 	// ... other actions here ...
-	
+	*/
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
 	// Expressions
 	function Exps() {};
 	
-	// the example expression
-	Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
-	{
-		ret.set_int(1337);				// return our value
-		// ret.set_float(0.5);			// for returning floats
-		// ret.set_string("Hello");		// for ef_return_string
-		// ret.set_any("woo");			// for ef_return_any, accepts either a number or string
+	Exps.prototype.WindowWidth = function (ret){
+		ret.set_int(window.innerWidth);
 	};
 	
+	Exps.prototype.WindowHeight = function (ret){
+		ret.set_int(window.innerHeight);
+	};
 	// ... other expressions here ...
 	
 	pluginProto.exps = new Exps();
