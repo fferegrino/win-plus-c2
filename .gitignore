@@ -179,3 +179,8 @@ FakesAssemblies/
 
 # Windows stuff
 *.db
+
+# Addon & zip
+*.c2addon
+*.zip
+addon/

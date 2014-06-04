@@ -45,7 +45,7 @@ cr.plugins_.wpc2 = function(runtime)
 	instanceProto.onCreate = function()
 	{
 		var self = this;
-		if (1)//(this.isWindows8)
+		if (this.isWindows8)
 		{
 			window.addEventListener('resize', function(){
 				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnResizec2, self);

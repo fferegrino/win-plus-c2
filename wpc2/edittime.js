@@ -6,7 +6,7 @@
 		"version":		"1.0",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extiende las capacidades de tu juego cuando lo exportas a Windows 8",
 		"author":		"@fferegrino",
-		"help url":		"http://blog.fferegrino.org",
+		"help url":		"http://fferegrino.github.io/win-plus-c2#doc",
 		"category":		"Platform specific",	// Prefer to re-use existing categories, but you can set anything here
 		"type":			"object",				// either "world" (appears in layout and is drawn), else "object"
 		"rotatable":	true,					// only used when "type" is "world".  Enables an angle property on the object.
