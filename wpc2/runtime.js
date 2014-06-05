@@ -28,7 +28,6 @@ cr.plugins_.wpc2 = function(runtime)
 	// called on startup for each object type
 	typeProto.onCreate = function()
 	{
-		this.ratioTolerance = 1;
 	};
 
 	/////////////////////////////////////
@@ -44,6 +43,7 @@ cr.plugins_.wpc2 = function(runtime)
 	// called whenever an instance is created
 	instanceProto.onCreate = function()
 	{
+		this.isWindows8 = this.runtime.isWindows8App;
 		var self = this;
 		if (this.isWindows8)
 		{

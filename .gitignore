@@ -184,3 +184,5 @@ FakesAssemblies/
 *.c2addon
 *.zip
 addon/
+
+sample project/
