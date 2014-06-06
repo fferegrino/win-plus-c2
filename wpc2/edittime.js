@@ -20,12 +20,17 @@
 ////////////////////////////////////////
 // Conditions
 
-// On window resize
+// On window resize 0:
 AddCondition(0, cf_trigger, "An action that ocurrs when the user resizes the screen", "Screen", "Screen resized", "Triggered when the user resizes the screen", "OnResizec2");
-// Check aspect ratio
+// Check aspect ratio 1:
 AddStringParam("Aspect ratio","Enter the aspect ratio to check", "\"16:9\"");
 AddNumberParam("Tolerance in aspect ratio", "Enter the +/- tolerance threshold", 0.5);
 AddCondition(1, 0, "Test if the screen has the specified aspect ratio", "Screen", "Has aspect ratio {0}", "Test if the screen has the specified aspect ratio", "CheckAspect");
+// Window.OnFocus 2:
+AddCondition(2, cf_trigger, "Triggered when the app gets focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
+// Window.OnBlur 3:
+AddCondition(3, cf_trigger, "Triggered when the app losts focus", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
+
 
 // End Conditions
 ////////////////////////////////////////

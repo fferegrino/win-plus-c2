@@ -50,6 +50,12 @@ cr.plugins_.wpc2 = function(runtime)
 			window.addEventListener('resize', function(){
 				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnResizec2, self);
 			});
+			window.addEventListener("blur", function () {
+				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnBlur, self);
+			});
+			window.addEventListener("focus", function () {
+				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnFocus, self);
+			});
 		}
 	};
 	
@@ -99,7 +105,7 @@ cr.plugins_.wpc2 = function(runtime)
 	/**BEGIN-PREVIEWONLY**/
 	instanceProto.getDebuggerValues = function (propsections)
 	{
-		// LOLOLOLOL this doesn't go to production
+		// LOLOLOLOL this doesn't goes to production
 		// Append to propsections any debugger sections you want to appear.
 		// Each section is an object with two members: "title" and "properties".
 		// "properties" is an array of individual debugger properties to display
@@ -149,6 +155,16 @@ cr.plugins_.wpc2 = function(runtime)
 			var speAspect = parseFloat(wh[0]) / parseFloat(wh[1]);
 			return (Math.abs(sysAspect - speAspect) < threshold);
 		}
+		return true;
+	};
+	
+	// 2:
+	Cnds.prototype.OnFocus = function (){
+		return true;
+	};
+	
+	// 3:
+	Cnds.prototype.OnBlur = function (){
 		return true;
 	};
 	
