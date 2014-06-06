@@ -3,7 +3,7 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.0",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"version":		"1.2",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extiende las capacidades de tu juego cuando lo exportas a Windows 8",
 		"author":		"@fferegrino",
 		"help url":		"http://fferegrino.github.io/win-plus-c2#doc",
@@ -21,15 +21,15 @@
 // Conditions
 
 // On window resize 0:
-AddCondition(0, cf_trigger, "An action that ocurrs when the user resizes the screen", "Screen", "Screen resized", "Triggered when the user resizes the screen", "OnResizec2");
+AddCondition(0, cf_trigger, "On window resize", "Screen", "Screen resized", "Triggered when the user resizes the screen", "OnResizec2");
 // Check aspect ratio 1:
-AddStringParam("Aspect ratio","Enter the aspect ratio to check", "\"16:9\"");
+AddStringParam("Aspect ratio","The aspect ratio to check against", "\"16:9\"");
 AddNumberParam("Tolerance in aspect ratio", "Enter the +/- tolerance threshold", 0.5);
-AddCondition(1, 0, "Test if the screen has the specified aspect ratio", "Screen", "Has aspect ratio {0}", "Test if the screen has the specified aspect ratio", "CheckAspect");
+AddCondition(1, cf_none, "Screen has the specified aspect ratio", "Screen", "Aspect ratio {0}", "Test if the screen has the specified aspect ratio", "CheckAspect");
 // Window.OnFocus 2:
-AddCondition(2, cf_trigger, "Triggered when the app gets focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
+AddCondition(2, cf_trigger, "On game focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
 // Window.OnBlur 3:
-AddCondition(3, cf_trigger, "Triggered when the app losts focus", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
+AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
 
 
 // End Conditions
