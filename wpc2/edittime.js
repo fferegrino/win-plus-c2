@@ -38,17 +38,19 @@ AddCondition(5, cf_trigger, "On MessageDialog's button 2 pressed", "Messages", "
 
 ////////////////////////////////////////
 // Actions
+// Show MessageDialog 0:
 AddStringParam("Title", "Enter a the title of the message.");
 AddStringParam("Content", "Enter a the content of the message.");
 AddStringParam("Button", "Enter the text to display in the button");
-AddAction(0, af_none, "Show message dialog (One button)", "Messages", "Show message {1} with {2} as an option", "Display a message using the MessageDialog API", "PopDialog1");
-
-
+AddAction(0, af_none, "Show message dialog (One button)", "UI", "Show message {1} with {2} as an option", "Display a message using the MessageDialog API", "PopDialog1");
+// Show MessageDialog (Two buttons) 1:
 AddStringParam("Title", "Enter a the title of the message.");
 AddStringParam("Content", "Enter a the content of the message.");
 AddStringParam("Button 1", "Enter the text to display in the 1st the button");
 AddStringParam("Button 2", "Enter the text to display in the 2nd the button");
-AddAction(1, af_none, "Show message dialog (Two buttons)", "Messages", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
+AddAction(1, af_none, "Show message dialog (Two buttons)", "UI", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
+// Show appbar
+AddAction(2, af_none, "Show AppBar", "UI", "Show AppBar", "Show your Windows Store AppBar", "ShowAppBar");
 // End Actions
 ////////////////////////////////////////
 
@@ -72,7 +74,9 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
-var property_list = [];
+var property_list = [
+	new cr.Property(ept_text, "AppBar ID", "appBar", "The ID of your Windows Store AppBar")
+	];
 	
 // Called by IDE when a new object type is to be created
 function CreateIDEObjectType()

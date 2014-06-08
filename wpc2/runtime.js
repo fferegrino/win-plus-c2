@@ -45,6 +45,9 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		this.isWindows8 = this.runtime.isWindows8App;
 		var self = this;
+		// Properties
+		this.appBarId = this.properties[0];
+		// Events
 		if (this.isWindows8)
 		{
 			window.addEventListener('resize', function(){
@@ -183,6 +186,7 @@ cr.plugins_.wpc2 = function(runtime)
 	//////////////////////////////////////
 	// Actions
 	function Acts() {};
+	// 1:
 	Acts.prototype.PopDialog1 = function (title_, content_, btext_)
 	{
 		if (this.isWindows8)
@@ -196,6 +200,7 @@ cr.plugins_.wpc2 = function(runtime)
 			msg.showAsync();
 		}
 	}
+	// 2:
 	Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
 	{
 		if (this.isWindows8)
@@ -213,6 +218,14 @@ cr.plugins_.wpc2 = function(runtime)
 			msg.showAsync();
 		}
 	}
+	// 3:
+	Acts.prototype.ShowAppBar = function ()
+	{
+		if (this.isWindows8 && this.appBarId)
+		{
+			document.getElementById(this.appBarId).winControl.show();
+		}
+	};
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
