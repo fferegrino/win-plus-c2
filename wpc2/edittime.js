@@ -29,6 +29,10 @@ AddCondition(1, cf_none, "Screen has the specified aspect ratio", "Screen", "Asp
 AddCondition(2, cf_trigger, "On game focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
 // Window.OnBlur 3:
 AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
+// MessageDialog Button 1 selected:
+AddCondition(4, cf_trigger, "On MessageDialog's button 1 pressed", "Messages", "MessageDialog's button 1 pressed", "Triggered when the user clicks on the 1st button of message dialog", "Button1Click");
+// MessageDialog Button 1 selected:
+AddCondition(5, cf_trigger, "On MessageDialog's button 2 pressed", "Messages", "MessageDialog's button 2 pressed", "Triggered when the user clicks on the 2nd button of message dialog", "Button2Click");
 // End Conditions
 ////////////////////////////////////////
 
@@ -37,14 +41,14 @@ AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggere
 AddStringParam("Title", "Enter a the title of the message.");
 AddStringParam("Content", "Enter a the content of the message.");
 AddStringParam("Button", "Enter the text to display in the button");
-AddAction(0, af_none, "Show message dialog (One button)", "Message", "Show message {1} with {2} as an option", "Display a message using the MessageDialog API", "PopDialog1");
+AddAction(0, af_none, "Show message dialog (One button)", "Messages", "Show message {1} with {2} as an option", "Display a message using the MessageDialog API", "PopDialog1");
 
 
 AddStringParam("Title", "Enter a the title of the message.");
 AddStringParam("Content", "Enter a the content of the message.");
 AddStringParam("Button 1", "Enter the text to display in the 1st the button");
 AddStringParam("Button 2", "Enter the text to display in the 2nd the button");
-AddAction(1, af_none, "Show message dialog (Two buttons)", "Message", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
+AddAction(1, af_none, "Show message dialog (Two buttons)", "Messages", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
 // End Actions
 ////////////////////////////////////////
 

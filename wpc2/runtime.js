@@ -168,6 +168,16 @@ cr.plugins_.wpc2 = function(runtime)
 		return true;
 	};
 	
+	// 4:
+	Cnds.prototype.Button1Click = function(){
+		return true;
+	}
+	
+	// 5:
+	Cnds.prototype.Button2Click = function(){
+		return true;
+	}
+	
 	pluginProto.cnds = new Cnds();
 	
 	//////////////////////////////////////
@@ -177,21 +187,29 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		if (this.isWindows8)
 		{
+			var self = this;
 			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
 			msg.commands.append(new Windows.UI.Popups.UICommand(
-				btext_, function () { }));
+				btext_, function () { 
+					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button1Click, self);
+				}));
 			msg.showAsync();
 		}
 	}
-		Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
+	Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
 	{
 		if (this.isWindows8)
 		{
+			var self = this;
 			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
 			msg.commands.append(new Windows.UI.Popups.UICommand(
-				btext1_, function () { }));
+				btext1_, function () { 
+					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button1Click, self);
+				}));
 			msg.commands.append(new Windows.UI.Popups.UICommand(
-				btext2_, function () { }));
+				btext2_, function () { 
+					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button2Click, self);
+				}));
 			msg.showAsync();
 		}
 	}
