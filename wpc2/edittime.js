@@ -19,7 +19,6 @@
 
 ////////////////////////////////////////
 // Conditions
-
 // On window resize 0:
 AddCondition(0, cf_trigger, "On window resize", "Screen", "Screen resized", "Triggered when the user resizes the screen", "OnResizec2");
 // Check aspect ratio 1:
@@ -30,27 +29,29 @@ AddCondition(1, cf_none, "Screen has the specified aspect ratio", "Screen", "Asp
 AddCondition(2, cf_trigger, "On game focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
 // Window.OnBlur 3:
 AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
-
-
 // End Conditions
 ////////////////////////////////////////
 
 ////////////////////////////////////////
 // Actions
+AddStringParam("Title", "Enter a the title of the message.");
+AddStringParam("Content", "Enter a the content of the message.");
+AddStringParam("Button", "Enter the text to display in the button");
+AddAction(0, af_none, "Show message dialog (One button)", "Message", "Show message {1} with {2} as an option", "Display a message using the MessageDialog API", "PopDialog1");
 
-/*// No actions for now
-AddStringParam("Message", "Enter a string to alert.");
-AddAction(0, af_none, "Alert", "My category", "Alert {0}", "Description for my action!", "MyAction");
-*/
+
+AddStringParam("Title", "Enter a the title of the message.");
+AddStringParam("Content", "Enter a the content of the message.");
+AddStringParam("Button 1", "Enter the text to display in the 1st the button");
+AddStringParam("Button 2", "Enter the text to display in the 2nd the button");
+AddAction(1, af_none, "Show message dialog (Two buttons)", "Message", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
 // End Actions
 ////////////////////////////////////////
 
 ////////////////////////////////////////
 // Expressions
-
 AddExpression(0, ef_return_number, "Window width", "Screen", "WindowWidth", "Get the width of the window");
 AddExpression(0, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
-
 // End Expressions
 ////////////////////////////////////////
 

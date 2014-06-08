@@ -172,8 +172,29 @@ cr.plugins_.wpc2 = function(runtime)
 	
 	//////////////////////////////////////
 	// Actions
-	// No actions for now
 	function Acts() {};
+	Acts.prototype.PopDialog1 = function (title_, content_, btext_)
+	{
+		if (this.isWindows8)
+		{
+			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
+			msg.commands.append(new Windows.UI.Popups.UICommand(
+				btext_, function () { }));
+			msg.showAsync();
+		}
+	}
+		Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
+	{
+		if (this.isWindows8)
+		{
+			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
+			msg.commands.append(new Windows.UI.Popups.UICommand(
+				btext1_, function () { }));
+			msg.commands.append(new Windows.UI.Popups.UICommand(
+				btext2_, function () { }));
+			msg.showAsync();
+		}
+	}
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
