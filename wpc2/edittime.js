@@ -3,10 +3,10 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.2",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"version":		"1.3",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extiende las capacidades de tu juego cuando lo exportas a Windows 8",
 		"author":		"@fferegrino",
-		"help url":		"http://fferegrino.github.io/win-plus-c2#doc",
+		"help url":		"http://fferegrino.github.io/win-plus-c2#docs",
 		"category":		"Platform specific",	// Prefer to re-use existing categories, but you can set anything here
 		"type":			"object",				// either "world" (appears in layout and is drawn), else "object"
 		"rotatable":	true,					// only used when "type" is "world".  Enables an angle property on the object.

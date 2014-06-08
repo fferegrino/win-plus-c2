@@ -192,12 +192,12 @@ cr.plugins_.wpc2 = function(runtime)
 		if (this.isWindows8)
 		{
 			var self = this;
-			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
-			msg.commands.append(new Windows.UI.Popups.UICommand(
+			var msg = new Windows["UI"]["Popups"]["MessageDialog"](title_, content_);
+			msg["commands"]["append"](new Windows["UI"]["Popups"]["UICommand"](
 				btext_, function () { 
 					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button1Click, self);
 				}));
-			msg.showAsync();
+			msg["showAsync"]();
 		}
 	}
 	// 2:
@@ -206,16 +206,16 @@ cr.plugins_.wpc2 = function(runtime)
 		if (this.isWindows8)
 		{
 			var self = this;
-			var msg = new Windows.UI.Popups.MessageDialog(title_, content_);
-			msg.commands.append(new Windows.UI.Popups.UICommand(
+			var msg = new Windows["UI"]["Popups"]["MessageDialog"](title_, content_);
+			msg["commands"]["append"](new Windows["UI"]["Popups"]["UICommand"](
 				btext1_, function () { 
 					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button1Click, self);
 				}));
-			msg.commands.append(new Windows.UI.Popups.UICommand(
+			msg["commands"]["append"](new Windows["UI"]["Popups"]["UICommand"](
 				btext2_, function () { 
 					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.Button2Click, self);
 				}));
-			msg.showAsync();
+			msg["showAsync"]();
 		}
 	}
 	// 3:
@@ -223,7 +223,7 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		if (this.isWindows8 && this.appBarId)
 		{
-			document.getElementById(this.appBarId).winControl.show();
+			document.getElementById(this.appBarId)["winControl"]["show"]();
 		}
 	};
 	pluginProto.acts = new Acts();
