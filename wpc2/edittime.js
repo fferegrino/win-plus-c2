@@ -3,7 +3,7 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.3",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"version":		"1.4",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extiende las capacidades de tu juego cuando lo exportas a Windows 8",
 		"author":		"@fferegrino",
 		"help url":		"http://fferegrino.github.io/win-plus-c2#docs",
@@ -30,9 +30,11 @@ AddCondition(2, cf_trigger, "On game focus", "App state", "App OnFocus", "Trigge
 // Window.OnBlur 3:
 AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
 // MessageDialog Button 1 selected:
-AddCondition(4, cf_trigger, "On MessageDialog's button 1 pressed", "Messages", "MessageDialog's button 1 pressed", "Triggered when the user clicks on the 1st button of message dialog", "Button1Click");
+AddCondition(4, cf_trigger, "On MessageDialog's button 1 pressed", "Messages", "MessageDialog button 1 pressed", "Triggered when the user clicks on the 1st button of message dialog", "Button1Click");
 // MessageDialog Button 1 selected:
-AddCondition(5, cf_trigger, "On MessageDialog's button 2 pressed", "Messages", "MessageDialog's button 2 pressed", "Triggered when the user clicks on the 2nd button of message dialog", "Button2Click");
+AddCondition(5, cf_trigger, "On MessageDialog's button 2 pressed", "Messages", "MessageDialog button 2 pressed", "Triggered when the user clicks on the 2nd button of message dialog", "Button2Click");
+// Has touch input:
+AddCondition(6, cf_none, "Device has touch input", "Device", "Device has touch input", "Test if the device where your game is running on has support for touch input", "HasTouchInput");	
 // End Conditions
 ////////////////////////////////////////
 

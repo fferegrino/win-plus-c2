@@ -158,7 +158,7 @@ cr.plugins_.wpc2 = function(runtime)
 			var speAspect = parseFloat(wh[0]) / parseFloat(wh[1]);
 			return (Math.abs(sysAspect - speAspect) < threshold);
 		}
-		return true;
+		return false;
 	};
 	
 	// 2:
@@ -179,6 +179,14 @@ cr.plugins_.wpc2 = function(runtime)
 	// 5:
 	Cnds.prototype.Button2Click = function(){
 		return true;
+	}
+	
+	// 6:
+	Cnds.prototype.HasTouchInput = function (){
+		if(this.isWindows8){
+			return (new Windows["Devices"]["Input"]["TouchCapabilities"]())["touchPresent"];
+		}
+		return false;
 	}
 	
 	pluginProto.cnds = new Cnds();
