@@ -41,6 +41,8 @@ AddCondition(7, cf_none, "Is Windows Device", "Device", "Device is a Windows Pla
 AddCondition(8, cf_none, "Is Windows Phone", "Device", "Device is Windows Phone", "Test if the device where your game is running on is a Windows Phone 8", "IsWindowsPhone8");
 // Is Windows 
 AddCondition(9, cf_none, "Is Windows 8", "Device", "Device is Windows 8", "Test if the device where your game is running on is a Windows 8", "IsWindows8");
+// On Share
+AddCondition(10, cf_trigger, "On share", "Sharing", "On share", "Triggered when user presses the Share charm.  Respond with a share action in this event.", "OnShare");
 // End Conditions
 ////////////////////////////////////////
 
@@ -61,13 +63,18 @@ AddAction(1, af_none, "Show message dialog (Two buttons)", "UI", "Show message {
 AddAction(2, af_none, "Show AppBar", "UI", "Show AppBar", "Show your Windows Store AppBar", "ShowAppBar");
 // Show shareUI
 AddAction(3, af_none, "Show share UI", "Sharing", "Show share UI", "Invoke the Share charm UI.", "ShowShareUI");
+// Share text
+AddStringParam("Title", "Title of the share.");
+AddStringParam("Description", "Description of the share.");
+AddStringParam("Text", "The text to share.");
+AddAction(4, af_none, "Share text", "Sharing", "Share text <i>{2}</i> (title {0}, description {1})", "In an 'On share' event, share some text.", "ShareText");
 // End Actions
 ////////////////////////////////////////
 
 ////////////////////////////////////////
 // Expressions
 AddExpression(0, ef_return_number, "Window width", "Screen", "WindowWidth", "Get the width of the window");
-AddExpression(0, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
+AddExpression(1, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
 // End Expressions
 ////////////////////////////////////////
 
@@ -85,7 +92,8 @@ ACESDone();
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_text, "AppBar ID", "appBar", "The ID of your Windows Store AppBar")
+	new cr.Property(ept_text, "AppBar ID", "appBar", "The ID of your Windows Store AppBar"),
+	new cr.Property(ept_combo, "Share content", "Yes", "Select set to 'Yes' if you will use this plugin to share", "No|Yes")
 	];
 	
 // Called by IDE when a new object type is to be created

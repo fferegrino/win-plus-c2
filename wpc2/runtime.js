@@ -39,6 +39,8 @@ cr.plugins_.wpc2 = function(runtime)
 	};
 	
 	var instanceProto = pluginProto.Instance.prototype;
+	var dataRequestEvent = null;
+	var wasShareHandled = false;
 
 	// called whenever an instance is created
 	instanceProto.onCreate = function()
@@ -48,6 +50,7 @@ cr.plugins_.wpc2 = function(runtime)
 		var self = this;
 		// Properties
 		this.appBarId = this.properties[0];
+		this.shareEnabled = (this.properties[1] !== 0);
 		// Events
 		if (this.isWindows8 || this.isWindowsPhone8)
 		{
@@ -60,6 +63,20 @@ cr.plugins_.wpc2 = function(runtime)
 			window.addEventListener("focus", function () {
 				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnFocus, self);
 			});
+			// Sharing:
+			if(this.shareEnabled){
+				// Code from Construct's Windows 8 plugin:				
+				Windows["ApplicationModel"]["DataTransfer"]["DataTransferManager"]["getForCurrentView"]().addEventListener("datarequested", function (e) {
+					dataRequestEvent = e;
+					wasShareHandled = false;
+					self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnShare, self);
+					dataRequestEvent = null;
+					
+					// Not handled: fail explicitly
+					if (!wasShareHandled)
+						e["request"]["failWithDisplayText"]("Try selecting a different option before sharing.");
+				});
+			}
 		}
 	};
 	
@@ -184,6 +201,11 @@ cr.plugins_.wpc2 = function(runtime)
 	Cnds.prototype.IsWindows8 = function (){
 		return this.isWindows8;
 	}
+	// 10:
+	Cnds.prototype.OnShare = function ()
+	{
+		return true;
+	};
 	pluginProto.cnds = new Cnds();
 	
 	//////////////////////////////////////
@@ -234,6 +256,18 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		if (this.isWindows8 || this.isWindowsPhone8)
 			Windows["ApplicationModel"]["DataTransfer"]["DataTransferManager"]["showShareUI"]();
+	};
+	// 4:
+	Acts.prototype.ShareText = function (title_, description_, text_)
+	{
+		if (this.isWindows8 && dataRequestEvent)
+		{
+			var request = dataRequestEvent["request"];
+			request["data"]["properties"]["title"] = title_;
+			request["data"]["properties"]["description"] = description_;
+			request["data"]["setText"](text_);
+			wasShareHandled = true;
+		}
 	};
 	pluginProto.acts = new Acts();
 	
