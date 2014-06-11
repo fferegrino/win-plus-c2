@@ -44,11 +44,12 @@ cr.plugins_.wpc2 = function(runtime)
 	instanceProto.onCreate = function()
 	{
 		this.isWindows8 = this.runtime.isWindows8App;
+		this.isWindowsPhone8 = this.runtime.isWindowsPhone81;
 		var self = this;
 		// Properties
 		this.appBarId = this.properties[0];
 		// Events
-		if (this.isWindows8)
+		if (this.isWindows8 || this.isWindowsPhone8)
 		{
 			window.addEventListener('resize', function(){
 				self.runtime.trigger(cr.plugins_.wpc2.prototype.cnds.OnResizec2, self);
@@ -103,29 +104,12 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 	};
 	
-	// The comments around these functions ensure they are removed when exporting, since the
-	// debugger code is no longer relevant after publishing.
 	/**BEGIN-PREVIEWONLY**/
 	instanceProto.getDebuggerValues = function (propsections)
 	{
-		// LOLOLOLOL this doesn't goes to production
-		// Append to propsections any debugger sections you want to appear.
-		// Each section is an object with two members: "title" and "properties".
-		// "properties" is an array of individual debugger properties to display
-		// with their name and value, and some other optional settings.
 		propsections.push({
 			"title": "My debugger section",
-			"properties": [
-				// Each property entry can use the following values:
-				// "name" (required): name of the property (must be unique within this section)
-				// "value" (required): a boolean, number or string for the value
-				// "html" (optional, default false): set to true to interpret the name and value
-				//									 as HTML strings rather than simple plain text
-				// "readonly" (optional, default false): set to true to disable editing the property
-				
-				// Example:
-				// {"name": "My property", "value": this.myValue}
-			]
+			"properties": [	]
 		});
 	};
 	
@@ -183,18 +167,29 @@ cr.plugins_.wpc2 = function(runtime)
 	
 	// 6:
 	Cnds.prototype.HasTouchInput = function (){
-		if(this.isWindows8){
-			return (new Windows["Devices"]["Input"]["TouchCapabilities"]())["touchPresent"];
+		if(this.isWindows8 || this.isWindowsPhone8){
+			return (new Windows["Devices"]["Input"]["TouchCapabilities"]())["touchPresent"] || this.isWindowsPhone8;
 		}
-		return false;
+		return true;
 	}
-	
+	// 7:
+	Cnds.prototype.IsWindowsDevice = function (){
+		return this.isWindows8 || this.isWindowsPhone8;
+	}
+	// 8:
+	Cnds.prototype.IsWindowsPhone8 = function (){
+		return this.isWindowsPhone8;
+	}
+	// 9:
+	Cnds.prototype.IsWindows8 = function (){
+		return this.isWindows8;
+	}
 	pluginProto.cnds = new Cnds();
 	
 	//////////////////////////////////////
 	// Actions
 	function Acts() {};
-	// 1:
+	// 0:
 	Acts.prototype.PopDialog1 = function (title_, content_, btext_)
 	{
 		if (this.isWindows8)
@@ -208,7 +203,7 @@ cr.plugins_.wpc2 = function(runtime)
 			msg["showAsync"]();
 		}
 	}
-	// 2:
+	// 1:
 	Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
 	{
 		if (this.isWindows8)
@@ -226,13 +221,19 @@ cr.plugins_.wpc2 = function(runtime)
 			msg["showAsync"]();
 		}
 	}
-	// 3:
+	// 2:
 	Acts.prototype.ShowAppBar = function ()
 	{
 		if (this.isWindows8 && this.appBarId)
 		{
 			document.getElementById(this.appBarId)["winControl"]["show"]();
 		}
+	};
+	// 3:	
+	Acts.prototype.ShowShareUI = function ()
+	{
+		if (this.isWindows8 || this.isWindowsPhone8)
+			Windows["ApplicationModel"]["DataTransfer"]["DataTransferManager"]["showShareUI"]();
 	};
 	pluginProto.acts = new Acts();
 	

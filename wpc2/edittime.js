@@ -35,6 +35,12 @@ AddCondition(4, cf_trigger, "On MessageDialog's button 1 pressed", "Messages", "
 AddCondition(5, cf_trigger, "On MessageDialog's button 2 pressed", "Messages", "MessageDialog button 2 pressed", "Triggered when the user clicks on the 2nd button of message dialog", "Button2Click");
 // Has touch input:
 AddCondition(6, cf_none, "Device has touch input", "Device", "Device has touch input", "Test if the device where your game is running on has support for touch input", "HasTouchInput");	
+// Is Windows Device:
+AddCondition(7, cf_none, "Is Windows Device", "Device", "Device is a Windows Platform", "Test if the device where your game is running on is a Windows Platform", "IsWindowsDevice");
+// Is Windows Phone
+AddCondition(8, cf_none, "Is Windows Phone", "Device", "Device is Windows Phone", "Test if the device where your game is running on is a Windows Phone 8", "IsWindowsPhone8");
+// Is Windows 
+AddCondition(9, cf_none, "Is Windows 8", "Device", "Device is Windows 8", "Test if the device where your game is running on is a Windows 8", "IsWindows8");
 // End Conditions
 ////////////////////////////////////////
 
@@ -53,6 +59,8 @@ AddStringParam("Button 2", "Enter the text to display in the 2nd the button");
 AddAction(1, af_none, "Show message dialog (Two buttons)", "UI", "Show message {1} with {2} and {3} as options", "Display a message using the MessageDialog API", "PopDialog2");
 // Show appbar
 AddAction(2, af_none, "Show AppBar", "UI", "Show AppBar", "Show your Windows Store AppBar", "ShowAppBar");
+// Show shareUI
+AddAction(3, af_none, "Show share UI", "Sharing", "Show share UI", "Invoke the Share charm UI.", "ShowShareUI");
 // End Actions
 ////////////////////////////////////////
 
