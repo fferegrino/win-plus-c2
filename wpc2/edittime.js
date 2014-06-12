@@ -26,9 +26,9 @@ AddStringParam("Aspect ratio","The aspect ratio to check against", "\"16:9\"");
 AddNumberParam("Tolerance in aspect ratio", "Enter the +/- tolerance threshold", 0.5);
 AddCondition(1, cf_none, "Screen has the specified aspect ratio", "Screen", "Aspect ratio {0}", "Test if the screen has the specified aspect ratio", "CheckAspect");
 // Window.OnFocus 2:
-AddCondition(2, cf_trigger, "On game focus", "App state", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
+AddCondition(2, cf_trigger, "On game focus", "Application", "App OnFocus", "Triggered when the app gets focus", "OnFocus");
 // Window.OnBlur 3:
-AddCondition(3, cf_trigger, "On game blur", "App state", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
+AddCondition(3, cf_trigger, "On game blur", "Application", "App OnBlur", "Triggered when the app lost focus", "OnBlur");
 // MessageDialog Button 1 selected:
 AddCondition(4, cf_trigger, "On MessageDialog's button 1 pressed", "Messages", "MessageDialog button 1 pressed", "Triggered when the user clicks on the 1st button of message dialog", "Button1Click");
 // MessageDialog Button 1 selected:
@@ -68,6 +68,7 @@ AddStringParam("Title", "Title of the share.");
 AddStringParam("Description", "Description of the share.");
 AddStringParam("Text", "The text to share.");
 AddAction(4, af_none, "Share text", "Sharing", "Share text <i>{2}</i> (title {0}, description {1})", "In an 'On share' event, share some text.", "ShareText");
+AddAction(5, af_none, "Show settings pane", "Settings", "Show settings pane", "Invoke the settings pane.", "ShowSettingsUI");
 // End Actions
 ////////////////////////////////////////
 
@@ -75,6 +76,7 @@ AddAction(4, af_none, "Share text", "Sharing", "Share text <i>{2}</i> (title {0}
 // Expressions
 AddExpression(0, ef_return_number, "Window width", "Screen", "WindowWidth", "Get the width of the window");
 AddExpression(1, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
+AddExpression(2, ef_return_string, "Windows App Version", "Application", "AppVersion", "Get the version of your Windows App");
 // End Expressions
 ////////////////////////////////////////
 

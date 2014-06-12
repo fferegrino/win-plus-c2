@@ -269,6 +269,12 @@ cr.plugins_.wpc2 = function(runtime)
 			wasShareHandled = true;
 		}
 	};
+	// 5:
+	Acts.prototype.ShowSettingsUI = function(){
+		if (this.isWindows8){
+			Windows["UI"]["ApplicationSettings"]["SettingsPane"]["show"]();
+		}
+	}
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
@@ -282,6 +288,18 @@ cr.plugins_.wpc2 = function(runtime)
 	Exps.prototype.WindowHeight = function (ret){
 		ret.set_int(window.innerHeight);
 	};
+	
+	Exps.prototype.AppVersion = function(ret){
+		var returnVal = "";
+		if(this.isWindows8  || this.isWindowsPhone8){
+			var current = Windows.ApplicationModel.Package.current.id.version;
+			returnVal = current.major + "." + 
+                 current.minor + "." +
+                 current.build + "." +
+                 current.revision;
+		}	
+		ret.set_string(returnVal);
+	}
 	
 	pluginProto.exps = new Exps();
 
