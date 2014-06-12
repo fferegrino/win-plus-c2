@@ -214,7 +214,7 @@ cr.plugins_.wpc2 = function(runtime)
 	// 0:
 	Acts.prototype.PopDialog1 = function (title_, content_, btext_)
 	{
-		if (this.isWindows8)
+		if ((this.isWindows8  || this.isWindowsPhone8))
 		{
 			var self = this;
 			var msg = new Windows["UI"]["Popups"]["MessageDialog"](title_, content_);
@@ -228,7 +228,7 @@ cr.plugins_.wpc2 = function(runtime)
 	// 1:
 	Acts.prototype.PopDialog2 = function (title_, content_, btext1_, btext2_)
 	{
-		if (this.isWindows8)
+		if ((this.isWindows8  || this.isWindowsPhone8))
 		{
 			var self = this;
 			var msg = new Windows["UI"]["Popups"]["MessageDialog"](title_, content_);
@@ -260,7 +260,7 @@ cr.plugins_.wpc2 = function(runtime)
 	// 4:
 	Acts.prototype.ShareText = function (title_, description_, text_)
 	{
-		if (this.isWindows8 && dataRequestEvent)
+		if ((this.isWindows8  || this.isWindowsPhone8) && dataRequestEvent)
 		{
 			var request = dataRequestEvent["request"];
 			request["data"]["properties"]["title"] = title_;
