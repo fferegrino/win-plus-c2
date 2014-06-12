@@ -4,5 +4,9 @@ The current Windows 8 plugin which is included on Construct2 doesn't fit my need
 ### Latest release
 Check the latest release [here][1] 
 
+### Documentation
+Check the docs [here][2]
+
 
   [1]: https://github.com/fferegrino/win-plus-c2/releases/latest
+  [2]: http://fferegrino.github.io/win-plus-c2/
