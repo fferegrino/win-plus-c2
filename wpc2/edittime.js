@@ -3,8 +3,8 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.4",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
-		"description":	"Extiende las capacidades de tu juego cuando lo exportas a Windows 8",
+		"version":		"1.5",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"description":	"Extiende las capacidades de tu juego cuando lo exportas a plataformas Windows",
 		"author":		"@fferegrino",
 		"help url":		"http://fferegrino.github.io/win-plus-c2#docs",
 		"category":		"Platform specific",	// Prefer to re-use existing categories, but you can set anything here
@@ -69,6 +69,9 @@ AddStringParam("Description", "Description of the share.");
 AddStringParam("Text", "The text to share.");
 AddAction(4, af_none, "Share text", "Sharing", "Share text <i>{2}</i> (title {0}, description {1})", "In an 'On share' event, share some text.", "ShareText");
 AddAction(5, af_none, "Show settings pane", "Settings", "Show settings pane", "Invoke the settings pane.", "ShowSettingsUI");
+AddStringParam("Text", "The text to set in the Live Tile.");
+AddAction(6, af_none, "Update text tile", "Tiles", "Set text {0} in Live Tile", "Set the specified text in the Live Tile", "SetTextTile");
+AddAction(7, af_none, "Clear tile", "Tiles", "Clear the current Live Tile", "Clear the content of the Live Tile", "ClearTile");
 // End Actions
 ////////////////////////////////////////
 

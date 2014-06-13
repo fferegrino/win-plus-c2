@@ -275,6 +275,29 @@ cr.plugins_.wpc2 = function(runtime)
 			Windows["UI"]["ApplicationSettings"]["SettingsPane"]["show"]();
 		}
 	}
+	// 6:
+	Acts.prototype.SetTextTile = function(text_){
+		if(this.isWindows8  || this.isWindowsPhone8) {
+		var tileXmlString =
+            "<tile><visual version='3'><binding template='TileSquare150x150Text04' fallback='TileSquareText04'><text id='1'>" 
+			+ text_ 
+			+ "</text></binding><binding template='TileWide310x150Text03' fallback='TileWideText03'><text id='1'>" 
+			+ text_ 
+			+ "</text></binding><binding template='TileSquare310x310Text09'><text id='1'>" 
+			+ text_ 
+			+ "</text></binding></visual></tile>";
+			var tileDOM = new Windows["Data"]["Xml"]["Dom"]["XmlDocument"]();
+			tileDOM["loadXml"](tileXmlString);
+			var tile = new Windows["UI"]["Notifications"]["TileNotification"](tileDOM);
+			Windows["UI"]["Notifications"]["TileUpdateManager"]["createTileUpdaterForApplication"]()["update"](tile);
+		}
+	}
+	// 7:
+	Acts.prototype.ClearTile = function(){
+		if(this.isWindows8  || this.isWindowsPhone8) {
+			Windows["UI"]["Notifications"]["TileUpdateManager"]["createTileUpdaterForApplication"]()["clear"]();
+		}
+	}
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
