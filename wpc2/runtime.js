@@ -298,6 +298,36 @@ cr.plugins_.wpc2 = function(runtime)
 			Windows["UI"]["Notifications"]["TileUpdateManager"]["createTileUpdaterForApplication"]()["clear"]();
 		}
 	}
+	// 8: 
+	Acts.prototype.SetNumberBadge = function (value_){
+		if(this.isWindows8  || this.isWindowsPhone8) {
+			var badgeString = "<badge value='" + value_ + "' />";
+			var badgeDOM = new Windows["Data"]["Xml"]["Dom"]["XmlDocument"]();
+            badgeDOM["loadXml"](badgeString);
+            var badge = new Windows["UI"]["Notifications"]["BadgeNotification"](badgeDOM);
+            Windows["UI"]["Notifications"]["BadgeUpdateManager"]["createBadgeUpdaterForApplication"]()["update"](badge);
+		}
+	}
+	// 9: 
+	Acts.prototype.SetGlyphBadge = function (value_){
+		if(this.isWindows8  || this.isWindowsPhone8) {
+			var badgeString = "<badge value='" + badges[value_]["value"] + "' />";
+			var badgeDOM = new Windows["Data"]["Xml"]["Dom"]["XmlDocument"]();
+            badgeDOM["loadXml"](badgeString);
+            var badge = new Windows["UI"]["Notifications"]["BadgeNotification"](badgeDOM);
+            Windows["UI"]["Notifications"]["BadgeUpdateManager"]["createBadgeUpdaterForApplication"]()["update"](badge);
+		}
+	}
+	// 10:
+	Acts.prototype.SetNoBadge = function () {
+		if(this.isWindows8  || this.isWindowsPhone8) {
+			var badgeString = "<badge value='none' />";
+			var badgeDOM = new Windows["Data"]["Xml"]["Dom"]["XmlDocument"]();
+            badgeDOM["loadXml"](badgeString);
+            var badge = new Windows["UI"]["Notifications"]["BadgeNotification"](badgeDOM);
+            Windows["UI"]["Notifications"]["BadgeUpdateManager"]["createBadgeUpdaterForApplication"]()["update"](badge);
+		}
+	}
 	pluginProto.acts = new Acts();
 	
 	//////////////////////////////////////
