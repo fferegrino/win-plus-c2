@@ -77,13 +77,30 @@
 
 <p>This is a triggered condition, it is fired when the user clicks the second button in a MessageDialog.</p>
 
+<h4>
+<a name="on-share" class="anchor" href="#on-share"><span class="octicon octicon-link"></span></a>On share</h4>
+
+<p>This action is triggered when the user invokes the ShareUI, usually this condition is used with <em>Share text</em> action.</p>
+
+<h4>
+<a name="device-has-touch-input" class="anchor" href="#device-has-touch-input"><span class="octicon octicon-link"></span></a>Device has touch input</h4>
+
+<h4>
+<a name="is-windows-device" class="anchor" href="#is-windows-device"><span class="octicon octicon-link"></span></a>Is Windows device</h4>
+
+<h4>
+<a name="is-windows-8" class="anchor" href="#is-windows-8"><span class="octicon octicon-link"></span></a>Is Windows 8</h4>
+
+<h4>
+<a name="is-windows-phone-8" class="anchor" href="#is-windows-phone-8"><span class="octicon octicon-link"></span></a>Is Windows Phone 8</h4>
+
 <h3>
 <a name="actions" class="anchor" href="#actions"><span class="octicon octicon-link"></span></a>Actions</h3>
 
 <h4>
 <a name="show-appbar" class="anchor" href="#show-appbar"><span class="octicon octicon-link"></span></a>Show AppBar</h4>
 
-<p>If your app/game has an AppBar you can invoke it from yor game using this action. You must set the AppBar id in the properties of the plugin. <em>Please note that when you export a project to a Windows Store App, Construct 2 does not include the default styles so you may want to add it.</em></p>
+<p>If your app/game has an AppBar you can invoke it from yor game using this action. You must set the AppBar id in the properties of the plugin. <em>Please note that when you export a project to a Windows Store App, Construct 2 does not include the default styles so you may want to add it.</em> <strong>This feature won't work when exported to a Windows Phone app</strong>.</p>
 
 <h4>
 <a name="show-messagedialog-one-button" class="anchor" href="#show-messagedialog-one-button"><span class="octicon octicon-link"></span></a>Show MessageDialog (One button)</h4>
@@ -94,6 +111,46 @@
 <a name="show-messagedialog-two-buttons" class="anchor" href="#show-messagedialog-two-buttons"><span class="octicon octicon-link"></span></a>Show MessageDialog (Two buttons)</h4>
 
 <p>Show a message using the MessageDialog API. This action receives four parameters: The title of the message, the content of the message, the text to show in the default button of the message and the text to show in the other button of the message.</p>
+
+<h4>
+<a name="share-text" class="anchor" href="#share-text"><span class="octicon octicon-link"></span></a>Share text</h4>
+
+<p>Sets the text to be shared when the ShareUI is shown. This action receives three parameters: Title, Description and Text.</p>
+
+<h4>
+<a name="show-shareui" class="anchor" href="#show-shareui"><span class="octicon octicon-link"></span></a>Show ShareUI</h4>
+
+<p>This action invokes the ShareUI programatically.</p>
+
+<h4>
+<a name="show-settings-pane" class="anchor" href="#show-settings-pane"><span class="octicon octicon-link"></span></a>Show settings pane</h4>
+
+<p>This action invokes the Settings Pane in the Charm Bar. <strong>This feature won't work when exported to a Windows Phone app</strong>.</p>
+
+<h4>
+<a name="update-text-tile" class="anchor" href="#update-text-tile"><span class="octicon octicon-link"></span></a>Update text tile</h4>
+
+<p>Sets or updates the text in the app's tile.</p>
+
+<h4>
+<a name="clear-tile" class="anchor" href="#clear-tile"><span class="octicon octicon-link"></span></a>Clear tile</h4>
+
+<p>Clears the app's tile</p>
+
+<h4>
+<a name="set-number-badge" class="anchor" href="#set-number-badge"><span class="octicon octicon-link"></span></a>Set number badge</h4>
+
+<p>Sets a number badge in the app's tile</p>
+
+<h4>
+<a name="set-glyph-badge" class="anchor" href="#set-glyph-badge"><span class="octicon octicon-link"></span></a>Set glyph badge</h4>
+
+<p>Sets a glyph badge in the app's tile</p>
+
+<h4>
+<a name="clear-badge" class="anchor" href="#clear-badge"><span class="octicon octicon-link"></span></a>Clear badge</h4>
+
+<p>Clears the current badge in the app's tile</p>
 
 <h3>
 <a name="expressions" class="anchor" href="#expressions"><span class="octicon octicon-link"></span></a>Expressions</h3>
