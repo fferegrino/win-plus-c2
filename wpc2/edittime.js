@@ -3,7 +3,7 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.6",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"version":		"1.7",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extend your game features when exported to a Windows Universal App",
 		"author":		"@fferegrino",
 		"help url":		"http://fferegrino.github.io/win-plus-c2#docs",
@@ -14,8 +14,6 @@
 						| pf_singleglobal		// exists project-wide, e.g. mouse, keyboard.  "type" must be "object".
 	};
 };
-
-
 
 ////////////////////////////////////////
 // Conditions
@@ -94,16 +92,6 @@ AddExpression(2, ef_return_string, "Windows App Version", "Application", "AppVer
 ////////////////////////////////////////
 ACESDone();
 
-////////////////////////////////////////
-// Array of property grid properties for this plugin
-// new cr.Property(ept_integer,		name,	initial_value,	description)		// an integer value
-// new cr.Property(ept_float,		name,	initial_value,	description)		// a float value
-// new cr.Property(ept_text,		name,	initial_value,	description)		// a string
-// new cr.Property(ept_color,		name,	initial_value,	description)		// a color dropdown
-// new cr.Property(ept_font,		name,	"Arial,-16", 	description)		// a font with the given face name and size
-// new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
-// new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
-
 var property_list = [
 	new cr.Property(ept_text, "AppBar ID", "appBar", "The ID of your Windows Store AppBar"),
 	new cr.Property(ept_combo, "Share content", "Yes", "Select set to 'Yes' if you will use this plugin to share", "No|Yes")
@@ -114,22 +102,15 @@ function CreateIDEObjectType()
 {
 	return new IDEObjectType();
 }
-
-// Class representing an object type in the IDE
-function IDEObjectType()
-{
+function IDEObjectType() {
 	assert2(this instanceof arguments.callee, "Constructor called as a function");
 }
 
-// Called by IDE when a new object instance of this type is to be created
-IDEObjectType.prototype.CreateInstance = function(instance)
-{
+IDEObjectType.prototype.CreateInstance = function(instance) {
 	return new IDEInstance(instance);
 }
 
-// Class representing an individual instance of an object in the IDE
-function IDEInstance(instance, type)
-{
+function IDEInstance(instance, type) {
 	assert2(this instanceof arguments.callee, "Constructor called as a function");
 	
 	// Save the constructor parameters
@@ -141,34 +122,4 @@ function IDEInstance(instance, type)
 	
 	for (var i = 0; i < property_list.length; i++)
 		this.properties[property_list[i].name] = property_list[i].initial_value;
-}
-
-// Called when inserted via Insert Object Dialog for the first time
-IDEInstance.prototype.OnInserted = function()
-{
-}
-
-// Called when double clicked in layout
-IDEInstance.prototype.OnDoubleClicked = function()
-{
-}
-
-// Called after a property has been changed in the properties bar
-IDEInstance.prototype.OnPropertyChanged = function(property_name)
-{
-}
-
-// For rendered objects to load fonts or textures
-IDEInstance.prototype.OnRendererInit = function(renderer)
-{
-}
-
-// Called to draw self in the editor if a layout object
-IDEInstance.prototype.Draw = function(renderer)
-{
-}
-
-// For rendered objects to release fonts or textures
-IDEInstance.prototype.OnRendererReleased = function(renderer)
-{
 }

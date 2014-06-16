@@ -42,7 +42,6 @@ cr.plugins_.wpc2 = function(runtime)
 	var dataRequestEvent = null;
 	var wasShareHandled = false;
 
-	// called whenever an instance is created
 	instanceProto.onCreate = function()
 	{
 		this.isWindows8 = this.runtime.isWindows8App;
@@ -80,39 +79,17 @@ cr.plugins_.wpc2 = function(runtime)
 		}
 	};
 	
-	// called whenever an instance is destroyed
-	// note the runtime may keep the object after this call for recycling; be sure
-	// to release/recycle/reset any references to other objects in this function.
-	instanceProto.onDestroy = function ()
-	{
-	};
-	
 	// called when saving the full state of the game
 	instanceProto.saveToJSON = function ()
 	{
-		// return a Javascript object containing information about your object's state
-		// note you MUST use double-quote syntax (e.g. "property": value) to prevent
-		// Closure Compiler renaming and breaking the save format
-		return {
-			// e.g.
-			//"myValue": this.myValue
-		};
+		return { };
 	};
 	
 	// called when loading the full state of the game
-	instanceProto.loadFromJSON = function (o)
-	{
-		// load from the state previously saved by saveToJSON
-		// 'o' provides the same object that you saved, e.g.
-		// this.myValue = o["myValue"];
-		// note you MUST use double-quote syntax (e.g. o["property"]) to prevent
-		// Closure Compiler renaming and breaking the save format
-	};
+	instanceProto.loadFromJSON = function (o) { };
 	
 	// only called if a layout object - draw to a canvas 2D context
-	instanceProto.draw = function(ctx)
-	{
-	};
+	instanceProto.draw = function(ctx) { };
 	
 	// only called if a layout object in WebGL mode - draw to the WebGL context
 	// 'glw' is not a WebGL context, it's a wrapper - you can find its methods in GLWrap.js in the install
@@ -130,14 +107,7 @@ cr.plugins_.wpc2 = function(runtime)
 		});
 	};
 	
-	instanceProto.onDebugValueEdited = function (header, name, value)
-	{
-		// Called when a non-readonly property has been edited in the debugger. Usually you only
-		// will need 'name' (the property name) and 'value', but you can also use 'header' (the
-		// header title for the section) to distinguish properties with the same name.
-		if (name === "My property")
-			this.myProperty = value;
-	};
+	instanceProto.onDebugValueEdited = function (header, name, value) { };
 	/**END-PREVIEWONLY**/
 
 	//////////////////////////////////////
@@ -161,27 +131,22 @@ cr.plugins_.wpc2 = function(runtime)
 		}
 		return false;
 	};
-	
 	// 2:
 	Cnds.prototype.OnFocus = function (){
 		return true;
 	};
-	
 	// 3:
 	Cnds.prototype.OnBlur = function (){
 		return true;
 	};
-	
 	// 4:
 	Cnds.prototype.Button1Click = function(){
 		return true;
 	}
-	
 	// 5:
 	Cnds.prototype.Button2Click = function(){
 		return true;
 	}
-	
 	// 6:
 	Cnds.prototype.HasTouchInput = function (){
 		if(this.isWindows8 || this.isWindowsPhone8){
@@ -278,14 +243,14 @@ cr.plugins_.wpc2 = function(runtime)
 	// 6:
 	Acts.prototype.SetTextTile = function(text_){
 		if(this.isWindows8  || this.isWindowsPhone8) {
-		var tileXmlString =
-            "<tile><visual version='3'><binding template='TileSquare150x150Text04' fallback='TileSquareText04'><text id='1'>" 
-			+ text_ 
-			+ "</text></binding><binding template='TileWide310x150Text03' fallback='TileWideText03'><text id='1'>" 
-			+ text_ 
-			+ "</text></binding><binding template='TileSquare310x310Text09'><text id='1'>" 
-			+ text_ 
-			+ "</text></binding></visual></tile>";
+			var tileXmlString =
+				"<tile><visual version='3'><binding template='TileSquare150x150Text04' fallback='TileSquareText04'><text id='1'>" 
+				+ text_ 
+				+ "</text></binding><binding template='TileWide310x150Text03' fallback='TileWideText03'><text id='1'>" 
+				+ text_ 
+				+ "</text></binding><binding template='TileSquare310x310Text09'><text id='1'>" 
+				+ text_ 
+				+ "</text></binding></visual></tile>";
 			var tileDOM = new Windows["Data"]["Xml"]["Dom"]["XmlDocument"]();
 			tileDOM["loadXml"](tileXmlString);
 			var tile = new Windows["UI"]["Notifications"]["TileNotification"](tileDOM);
@@ -293,7 +258,7 @@ cr.plugins_.wpc2 = function(runtime)
 		}
 	}
 	// 7:
-	Acts.prototype.ClearTile = function(){
+	Acts.prototype.ClearTile = function() {
 		if(this.isWindows8  || this.isWindowsPhone8) {
 			Windows["UI"]["Notifications"]["TileUpdateManager"]["createTileUpdaterForApplication"]()["clear"]();
 		}
@@ -329,6 +294,7 @@ cr.plugins_.wpc2 = function(runtime)
 		}
 	}
 	pluginProto.acts = new Acts();
+	
 	
 	//////////////////////////////////////
 	// Expressions
