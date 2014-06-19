@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<c2addon>
+	<!-- One of: plugin, behavior, effect -->
+	<type>plugin</type>
+	<name>Windows + C2</name>	
+	<version>1.6</version>
+	<author>Antonio Feregrino</author>
+	<website>http://fferegrino.github.io/win-plus-c2</website>
+	<documentation>http://fferegrino.github.io/win-plus-c2#docs</documentation>
+	<description>This plugin adds functionality to your Windows Universal App</description>
+</c2addon>
