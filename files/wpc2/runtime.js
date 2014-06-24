@@ -293,6 +293,13 @@ cr.plugins_.wpc2 = function(runtime)
             Windows["UI"]["Notifications"]["BadgeUpdateManager"]["createBadgeUpdaterForApplication"]()["update"](badge);
 		}
 	}
+	// 11:
+	Acts.prototype.OpenPublisherApps = function (){
+		if(this.isWindows8  || this.isWindowsPhone8) {
+			var uri = new Windows["Foundation"]["Uri"]("ms-windows-store:Publisher?name=" + Windows["ApplicationModel"]["Package"]["current"]["publisherDisplayName"]);
+			Windows["System"]["Launcher"]["launchUriAsync"](uri);
+		}
+	}
 	pluginProto.acts = new Acts();
 	
 	
@@ -311,14 +318,22 @@ cr.plugins_.wpc2 = function(runtime)
 	Exps.prototype.AppVersion = function(ret){
 		var returnVal = "";
 		if(this.isWindows8  || this.isWindowsPhone8){
-			var current = Windows.ApplicationModel.Package.current.id.version;
+			var current = Windows["ApplicationModel"]["Package"]["current"]["id"]["version"];
 			returnVal = current.major + "." + 
                  current.minor + "." +
                  current.build + "." +
                  current.revision;
 		}	
 		ret.set_string(returnVal);
+	};
+	
+	Exps.prototype.PublisherDisplayName = function(ret) {
+		var returnVal = "";
+		if(this.isWindows8  || this.isWindowsPhone8){
+			returnVal = Windows["ApplicationModel"]["Package"]["current"]["publisherDisplayName"];
 	}
+		ret.set_string(returnVal);
+	};
 	
 	pluginProto.exps = new Exps();
 

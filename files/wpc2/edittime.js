@@ -78,6 +78,7 @@ for(var ii = 0; ii < badges.length; ii++){
 AddComboParam("Glyph", "Choose the glyph for the live tile.");
 AddAction(9, af_none, "Set glyph badge", "Tiles", "Set a glyph in the live tile", "Set a glyph in the live tile", "SetGlyphBadge");
 AddAction(10, af_none, "Set clear badge", "Tiles", "Remove the live tile badge", "Remove the live tile badge", "SetNoBadge");
+AddAction(11, af_none, "Open other publisher apps", "Publisher", "Show apps from publisher", "Open the Windows Store and shows other apps from the publisher", "OpenPublisherApps");
 // End Actions
 ////////////////////////////////////////
 
@@ -86,6 +87,7 @@ AddAction(10, af_none, "Set clear badge", "Tiles", "Remove the live tile badge",
 AddExpression(0, ef_return_number, "Window width", "Screen", "WindowWidth", "Get the width of the window");
 AddExpression(1, ef_return_number, "Window height", "Screen", "WindowHeight", "Get the height of the window");
 AddExpression(2, ef_return_string, "Windows App Version", "Application", "AppVersion", "Get the version of your Windows App");
+AddExpression(3, ef_return_string, "Windows App publisher display name", "Application", "PublisherDisplayName", "Get the publisher display name of your Windows App");
 // End Expressions
 ////////////////////////////////////////
 
@@ -123,3 +125,4 @@ function IDEInstance(instance, type) {
 	for (var i = 0; i < property_list.length; i++)
 		this.properties[property_list[i].name] = property_list[i].initial_value;
 }
+
