@@ -3,7 +3,7 @@
 	return {
 		"name":			"Windows + c2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"wpc2",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.7",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"version":		"1.8",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"Extend your game features when exported to a Windows Universal App",
 		"author":		"@fferegrino",
 		"help url":		"http://fferegrino.github.io/win-plus-c2#docs",

@@ -119,7 +119,6 @@ cr.plugins_.wpc2 = function(runtime)
 	{
 		return true;
 	};
-	
 	// 1:
 	Cnds.prototype.CheckAspect = function (stringAspect, threshold)
 	{
